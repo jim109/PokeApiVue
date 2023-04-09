@@ -1,6 +1,13 @@
+.bienvenidos {
+  font-family: $fuente_secundaria;
+  color: $grisOscuro;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
 .main-card {
         div h3 {
             margin: 0;
+            font-family: $fuente_secundaria;
+            font-weight: 16px;
         }
         div span {
             font-size: 1rem;
@@ -8,7 +15,8 @@
             border-radius: 10px;
             text-align: center;
             text-transform: capitalize;
-            font-size: 14px;
+            font-size: 10px;
+            font-family: $fuente_secundaria;
         }
     .card {
         background-color: $blanco;
@@ -53,8 +61,16 @@
           font-size: 20px;
         }
         }
-}
 
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+input:focus {
+      outline: none;
+  }
 
 .image-container:hover .pokemon-image {
   display: none;

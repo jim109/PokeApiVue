@@ -1,6 +1,6 @@
 <template>
 <div class="contenedor">
-    <h1>Bienvenidos al mundo pokemon</h1>
+    <h1 class="bienvenidos">Bienvenidos al mundo pokemon</h1>
     <div class="container">
       <div v-if="isLoading">
         Loading...
