@@ -9,7 +9,7 @@
 
 <style lang="scss">
 nav {
-  padding: 30px;
+  padding-top: 30px;
   text-align: center;
 
   a {

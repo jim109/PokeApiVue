@@ -14,12 +14,9 @@ const usePokemonAll = () => {
         pokemons.value = []
         try {
             const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=12&offset=${(page - 1) * 12}`)
-            console.log(data.results)
             const pokemonData = await Promise.all(
-                
                 data.results.map(async(result) => {
                     const pokemonInfo = await axios.get(result.url)
-                    console.log(pokemonInfo.data);
                     return {
                         name: pokemonInfo.data.name,
                         image: pokemonInfo.data.sprites.other['official-artwork'].front_default,

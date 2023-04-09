@@ -2,8 +2,6 @@
 <div class="contenedor">
     <h1>Bienvenidos al mundo pokemon</h1>
     <div class="container">
-
-      <h2>Pokémon List</h2>
       <div v-if="isLoading">
         Loading...
       </div>
@@ -42,24 +40,38 @@
 
     </div>
 
-    <div class="contenedor">
-      <h5>{{ currentPage }}</h5>
+    <div class="contenedor contenedor-boton">
       <button @click="prevPage" class="boton-verde">Atras</button>
+      <form @submit.prevent="onSubmit">
+        <input 
+            type="number"
+            placeholder="Numero del pokemon"
+            v-model="goTo"
+        >
+      </form>
       <button @click="nextPage" class="boton-verde">Siguiente</button>
     </div>
 
 </div>
+<footer class="footer seccion">
+  <p class="copyright">© Jimmy Osma - All right reserved 2023 </p>
+</footer>
 </template>
 
 <script>
 import usePokemonAll from '@/composables/usePokemonAll';
+import { ref } from 'vue';
+
 export default {
 
   setup() {
     const { pokemons, isLoading, errorMessage, searchPokemon, nextPage, prevPage, currentPage, totalPage } = usePokemonAll()
-   
+    const goTo = ref(currentPage)
     return{
-      pokemons, isLoading, errorMessage, searchPokemon, nextPage, prevPage, currentPage, totalPage
+      pokemons, isLoading, errorMessage, searchPokemon, nextPage, prevPage, currentPage, totalPage, goTo,
+      onSubmit() { 
+                searchPokemon(goTo.value)
+              }
     }
   }
 
