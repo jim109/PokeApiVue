@@ -6,7 +6,7 @@
     margin-bottom: 0;
 
     .contenedor-footer {
-        padding-top: calc($separacion/2);
+        // padding-top: calc($separacion/2);
         text-align: center;
     }
 
@@ -19,5 +19,8 @@
     .copyright {
         color: $blanco;
         text-align: center;
+    }
+    .atribucion {
+        color: $blanco;
     }
 }
