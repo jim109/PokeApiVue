@@ -39,6 +39,7 @@
       .card-title {
         text-transform: capitalize
       }
+
     @include tablet{
         @include grid(3, 2rem);
         .card {
@@ -52,5 +53,14 @@
           font-size: 20px;
         }
         }
+}
+.image-container:hover .pokemon-image {
+  display: none;
+}
+.pokemon-image-shiny {
+  display: none;
+}
+.image-container:hover .pokemon-image-shiny {
+  display: block;
 }
 

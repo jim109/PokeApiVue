@@ -29,8 +29,9 @@
               </template> -->
               </div>
 
-              <div>
-                <img :src="pokemon.image" alt="pokemon" />
+              <div class="image-container">
+                <img :src="pokemon.image" class="pokemon-image" alt="pokemon" />
+                <img :src="pokemon.imageBack" class="pokemon-image-shiny" alt="pokemon shiny" />
               </div>
             </div>
             
