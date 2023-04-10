@@ -22,5 +22,40 @@
     }
     .atribucion {
         color: $blanco;
+        text-align: center;
+        margin: 0;
+        a {
+            margin-left: 6px;
+            color: $amarillo;
+        }
+        a:hover {
+            transition: color 0.2s;
+            color: $rojo;
+
+        }
     }
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        margin: 0px;
+        align-items: center;
+        color: $blanco;
+      }
+      
+      .social-icons li {
+        list-style: none;
+        margin-right: 3rem;
+        font-size: 14px;
+      }
+      
+      .social-icons a {
+        color: $gris;
+        font-size: 24px;
+        transition: color 0.2s;
+      }
+      
+      .social-icons a:hover {
+        color: $amarillo;
+      }
+      
 }

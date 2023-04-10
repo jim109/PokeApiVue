@@ -1,7 +1,7 @@
 <template>
   <nav class="contenedor">
     <router-link to="/">Home</router-link> |
-    <router-link :to="{name: 'pokemon-search'}">Buscar</router-link> |
+    <router-link :to="{name: 'pokemon-search'}">Search</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
   <router-view/>
@@ -14,10 +14,12 @@ nav {
 
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: $gris;
+    padding: 0 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: $amarillo;
     }
   }
 }

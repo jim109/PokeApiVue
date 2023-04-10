@@ -12,39 +12,60 @@ const usePokemonAll = () => {
     const searchPokemon = async( page) => {
         isLoading.value = true
         pokemons.value = []
+
         try {
             const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=12&offset=${(page - 1) * 12}`)
+            const pokemonCount = data.count
+
             const pokemonData = await Promise.all(
                 data.results.map(async(result) => {
                     const pokemonInfo = await axios.get(result.url)
+                    
                     return {
                         name: pokemonInfo.data.name,
                         image: pokemonInfo.data.sprites.other['official-artwork'].front_default,
+                        imageDefault: pokemonInfo.data.sprites.front_default,
                         imageBack: pokemonInfo.data.sprites.other['official-artwork'].front_shiny,
                         type: pokemonInfo.data.types.map((type) => type.type.name),
                         ability: pokemonInfo.data.abilities.map((ability) => ability.ability.name),
                         statsname: pokemonInfo.data.stats.map((stats) => stats.stat.name),
                         stats: pokemonInfo.data.stats.map((stats) => stats.base_stat),
+                        
                     }
                 })
             )
+            if( !totalPages.value ) {
+                totalPages.value = Math.ceil(pokemonCount / pokemonData.length) 
+            }
+            
             pokemons.value = pokemonData
             errorMessage.value = null  
+            
         } catch (error) {
             errorMessage.value = 'No se pudo cargar ese Pokemon'
         }
         isLoading.value = false
     }
+    
 
     const nextPage = () => {
-        currentPage.value++;
-        searchPokemon(currentPage.value);
+        if(currentPage.value < totalPages.value) {
+            currentPage.value++;
+            searchPokemon(currentPage.value);
+        }
+        
       };
   
       const prevPage = () => {
-        currentPage.value--;
-        searchPokemon(currentPage.value);
+        if(currentPage.value > 1) {
+            currentPage.value--;
+            searchPokemon(currentPage.value);
+        } 
       };
+
+      const onImageError = (pokemon) => {
+        pokemon.image = '../assets/default-image.png'
+      }
   
       onMounted(() => {
         searchPokemon(currentPage.value);
@@ -59,7 +80,8 @@ const usePokemonAll = () => {
         nextPage,
         prevPage,
         currentPage,
-        totalPages
+        totalPages,
+        onImageError
     }
 }
 

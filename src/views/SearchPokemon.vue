@@ -1,5 +1,6 @@
 <template>
-    <h1>Buscar Pokemon: {{ pokemonId }} </h1>
+<div class="contenedor search">
+    <h1>Search your Pokemon for Id</h1>
     <form @submit.prevent="onSubmit">
       <input 
           type="number"
@@ -7,16 +8,22 @@
           v-model="pokemonId"
           ref="txtSearchId"
       >
+      <span>Click enter to search</span>
     </form>
-    <br>
-    <span>Presiones enter para buscar</span>
+    
+</div>
+<Footer />
   </template>
   
   <script>
   import { ref, onActivated } from 'vue'
   import { useRouter } from 'vue-router'
-  
+  import Footer from '@/components/Footer'
+
   export default {
+    components: {
+        Footer
+    },  
       setup() {
   
           const router = useRouter()
@@ -25,7 +32,7 @@
           const txtSearchId = ref()
   
           onActivated(() => {
-              txtSearchId.value.select()
+              txtSearchId.value.select() 
           })
   
           return { 
