@@ -1,13 +1,12 @@
 <template>
-<div class="contenedor">
-    <h1 class="bienvenidos">Welcome to the world of Pokemon!</h1>
-
-    <div class="container">
-      <div v-if="isLoading">
-        Loading...
+<div class="home">
+    <h1 class="bienvenidos">Welcome to the world of Pokemon!</h1>s
+    <div class="contenedor">
+      <div class="loader contenedor" v-if="isLoading">
+          <img src="../assets/imgLoader.png" alt="Cargando">
       </div>
-      <div v-if="errorMessage">
-        {{ errorMessage }}
+      <div v-if="errorMessage" class="contenedor">
+        <h3>{{ errorMessage }}</h3>
       </div>
       <section class="seccion contenedor">
         <div v-if="pokemons" class="main-card">
@@ -23,9 +22,9 @@
       </form>
       <button @click="nextPage" class="boton-verde">&gt;&gt;</button>
     </div>
-    
+    <Footer />
 </div>
-<Footer />
+
 </template>
 
 <script>
@@ -56,3 +55,31 @@ export default {
 
 }
 </script>
+<style scoped>
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: calc(100vh - 58px);
+}
+.loader {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  border-top-color: #3498db;
+  animation: spin 1s infinite linear;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+</style>

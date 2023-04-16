@@ -1,21 +1,21 @@
 <template>
-<div class="contenedor search">
-    <h1>Search your Pokemon for Id</h1>
-    <form @submit.prevent="onSubmit">
-      <input 
-          type="number"
-          placeholder="Numero del pokemon"
-          v-model="pokemonId"
-          ref="txtSearchId"
-      >
-      <span>Click enter to search</span>
-    </form>
-    
-</div>
-<Footer />
-  </template>
+    <div class="contenedor search">
+        <h1>Search your Pokemon for Id</h1>
+        <form @submit.prevent="onSubmit">
+        <input 
+            type="number"
+            placeholder="Numero del pokemon"
+            v-model="pokemonId"
+            ref="txtSearchId"
+        >
+        <span>Click enter to search</span>
+        </form>
+        
+    </div>
+    <Footer />
+</template>
   
-  <script>
+<script>
   import { ref, onActivated } from 'vue'
   import { useRouter } from 'vue-router'
   import Footer from '@/components/Footer'

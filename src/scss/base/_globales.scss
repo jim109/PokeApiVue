@@ -19,6 +19,12 @@ p {
     max-width: 120rem;
     margin: 0 auto;
 }
+.capitalize {
+    text-transform: capitalize
+  }
+.uppercase {
+    text-transform: uppercase    
+  }
 
 a {
     text-decoration: none;

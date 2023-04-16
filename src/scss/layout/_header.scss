@@ -1,5 +1,13 @@
 .inicio {
     background-image: url(@/assets/home.jpg);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
     
 }
 .header {
@@ -73,3 +81,4 @@
         }
 }
 }
+
