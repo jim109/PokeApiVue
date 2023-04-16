@@ -3,46 +3,62 @@
         <h1 v-if="!pokemon && !errorMessage">Buscando ...</h1>
         <h1 v-else-if="errorMessage">{{  errorMessage }}</h1>
     </div> -->
-    <div v-if="pokemon" class="main">
+<div v-if="pokemon" class="main">
         
-            <div class="image contenedor" >
-                <div class="round">
-                    <img :src="pokemon.sprites.other['official-artwork'].front_default" :alt="pokemon.id">
-                </div>
+    <div class="image contenedor" >
+        <div class="round">
+            <img :src="pokemon.sprites.other['official-artwork'].front_default" :alt="pokemon.id">
+        </div>
+    </div>
+    <div class="title-main contenedor">
+        <h1 class="uppercase">{{  pokemon.name  }}</h1>  
+        <p>#0{{ pokemon.id }}</p>
+    </div>   
+    <div class="section-type contenedor">
+        
+    <div class="main-type">
+    <h2>Type</h2>
+        <div class="types-container">
+            <div v-for="(type, index) in pokemon.types" :key="index" class="type">
+                <p>{{ type.type.name }}</p>
             </div>
-            <div class="title-main contenedor">
-                <h1 class="uppercase">{{  pokemon.name  }}</h1>  
-                <p>#0{{ pokemon.id }}</p>
-            </div>   
-            <div class="section-type contenedor">
-                <h2>Type:</h2>
-                <div class="main-type" v-for="(type, index) in pokemon.types" :key="index">
-                    <p>{{ type.type.name }}</p>
-                </div>
-                <h2>Height:</h2>
+        </div>
+    ß</div>
+        <div class="main-type">
+            <h2>Height</h2>
+            <div class="type-height">
                 <p> {{ pokemon.height }}</p>
-                <h2>Weight:</h2>
+            </div>
+        </div>
+        <div class="main-type">
+            <h2>Weight</h2>
+            <div class="type-weight">
                 <p>{{ pokemon.weight }}</p>
-            </div>      
+            </div>
+            
+        </div>
+    </div>      
 <section class="stats contenedor">
     <section>
-            <h2>Stats</h2>
-            <div class="contenedor" v-for="(stat, index) in pokemon.stats" :key="index">
-                <div class="main-base_stats">
-                    <h4 class="capitalize">{{ stat.stat.name }}</h4>
-                    <p>{{ stat.base_stat }} - 255</p>
-                </div>
-            <div class="barra-progreso">
+        <h2>Stats</h2>
+        <div class="contenedor" v-for="(stat, index) in pokemon.stats" :key="index">
+            <div class="main-base_stats">
+                <h4 class="capitalize">{{ stat.stat.name }}</h4>
+                <p>{{ stat.base_stat }} - 255</p>
+            </div>
+        <div class="barra-progreso">
             <div class="barra-fondo">
                 <div class="barra-valor" :style="{ width: Math.round(stat.base_stat / 2.55) + '%' }"></div>
             </div> 
         </div>
         </div>
     </section>
-    <section class="ability contenedor">
+    <section class="contenedor">
         <h2>Habilities</h2>
-        <div v-for="(ability, index) in pokemon.abilities" :key="index">
+        <div class="ability">
+            <div v-for="(ability, index) in pokemon.abilities" :key="index">
             <p>{{ ability.ability.name }}</p>
+        </div>
         </div>
     </section>
 </section>
@@ -51,9 +67,11 @@
             <button @click="currentPage++" :disabled="(currentPage + 1) * 10 >= pokemon.stats.length">Siguiente</button>
         </div> -->
             
-        <router-link :to="{name: 'pokemon-search'}">Regresar</router-link>
+        <div class="contenedor">
+            <router-link class="boton-regresar" :to="{name: 'pokemon-search'}" >Regresar</router-link>
+        </div>
         <Footer />
-    </div>
+</div>
 
     
 </template>
@@ -146,7 +164,40 @@ import Footer from '@/components/Footer.vue'
         background-size: 80%;
     }
 }
+.round img:hover {
+  animation: pulse 1s infinite;
+}
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.boton-regresar {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+    margin: 10px 0;
+  }
+
+  .boton-regresar:hover {
+    background-color: #3E8E41;
+  }
 
 </style>
 

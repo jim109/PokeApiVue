@@ -1,6 +1,6 @@
 
 .boton-amarillo {
-    @include boton($amarillo, inline-block);
+    @include boton($amarillo, center);
     
 }
 .boton-amarillo-block {
